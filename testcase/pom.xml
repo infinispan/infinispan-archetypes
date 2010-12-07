@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <parent>
+      <groupId>org.infinispan</groupId>
+      <artifactId>infinispan-parent</artifactId>
+      <version>4.1.0.FINAL</version>
+   </parent>
+
+   <groupId>org.infinispan.archetypes</groupId>
+   <artifactId>testcase</artifactId>
+   <packaging>jar</packaging>
+   <version>1.0.0-SNAPSHOT</version>
+   <name>Infinispan Sample Testcase Archetype</name>
+   <description>Builds a skeleton test case using Infinispan.  Very useful when reporting bugs.</description>
+
+   <!-- these deps are here so that we can compile the sample classes -->
+   <dependencies>
+      <dependency>
+         <groupId>org.infinispan</groupId>
+         <artifactId>infinispan-core</artifactId>
+         <version>5.0.0-SNAPSHOT</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.infinispan</groupId>
+         <artifactId>infinispan-core</artifactId>
+         <version>5.0.0-SNAPSHOT</version>
+         <type>test-jar</type>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+</project>

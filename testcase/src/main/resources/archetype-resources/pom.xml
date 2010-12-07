@@ -1,0 +1,233 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>${groupId}</groupId>
+   <artifactId>${artifactId}</artifactId>
+   <packaging>jar</packaging>
+   <version>${version}</version>
+   <name>A sample test case for Infinispan</name>
+   <url>http://www.myorganization.org</url>
+
+
+   <properties>
+      <!-- the default JGroups protocol stack to use -->
+      <infinispan.test.jgroups.protocol>tcp</infinispan.test.jgroups.protocol>
+      <!-- the default transaction manager to use -->
+      <infinispan.test.jta.tm>dummytm</infinispan.test.jta.tm>
+
+      <!-- Versions of dependencies -->
+      <version.infinispan>${infinispan.version}</version.infinispan>
+      <version.commons.logging>1.1</version.commons.logging>
+      <version.easymock>2.4</version.easymock>
+      <version.easymockclassext>2.4</version.easymockclassext>
+      <version.jbossjta>4.9.0.GA</version.jbossjta>
+      <version.jbossjts>4.9.0.GA</version.jbossjts>
+      <version.jbossts-common>4.6.1.GA</version.jbossts-common>
+      <version.log4j>1.2.16</version.log4j>
+      <version.testng>5.11</version.testng>
+      <version.xstream>1.3.1</version.xstream>
+   </properties>
+
+   <dependencies>
+      <dependency>
+         <groupId>org.infinispan</groupId>
+         <artifactId>infinispan-core</artifactId>
+         <version>${version.infinispan}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.infinispan</groupId>
+         <artifactId>infinispan-core</artifactId>
+         <version>${version.infinispan}</version>
+         <scope>test</scope>
+         <type>test-jar</type>
+      </dependency>
+
+      <!-- Other test dependencies -->
+      <dependency>
+         <groupId>org.testng</groupId>
+         <artifactId>testng</artifactId>
+         <version>${version.testng}</version>
+         <scope>test</scope>
+         <classifier>jdk15</classifier>
+      </dependency>
+      <dependency>
+         <groupId>org.easymock</groupId>
+         <artifactId>easymockclassextension</artifactId>
+         <version>${version.easymockclassext}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.easymock</groupId>
+         <artifactId>easymock</artifactId>
+         <version>${version.easymock}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>jboss.jbossts</groupId>
+         <artifactId>jbossjta</artifactId>
+         <version>${version.jbossjta}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>jboss.jbossts</groupId>
+         <artifactId>jbossjts</artifactId>
+         <version>${version.jbossjts}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
+         <version>${version.commons.logging}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>jboss.jbossts</groupId>
+         <artifactId>jbossts-common</artifactId>
+         <version>${version.jbossts-common}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>log4j</groupId>
+         <artifactId>log4j</artifactId>
+         <version>${version.log4j}</version>
+         <optional>true</optional>
+      </dependency>
+
+      <!-- used to serialize non-serializable objects for a dummy marshaller -->
+      <dependency>
+         <groupId>com.thoughtworks.xstream</groupId>
+         <artifactId>xstream</artifactId>
+         <version>${version.xstream}</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+
+   <build>
+      <plugins>
+         <!-- enforce java 1.6 and maven 2.1.0 -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-enforcer-plugin</artifactId>
+            <version>1.0-beta-1</version>
+            <executions>
+               <execution>
+                  <id>enforce-java</id>
+                  <goals>
+                     <goal>enforce</goal>
+                  </goals>
+                  <configuration>
+                     <rules>
+                        <requireJavaVersion>
+                           <version>[1.6,)</version>
+                        </requireJavaVersion>
+                        <requireMavenVersion>
+                           <version>[2.1.0,)</version>
+                        </requireMavenVersion>
+                     </rules>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+
+         <!-- by default, compile to JDK 1.6 compatibility -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.3.1</version>
+            <configuration>
+               <source>1.6</source>
+               <target>1.6</target>
+               <encoding>UTF-8</encoding>
+            </configuration>
+         </plugin>
+
+         <!-- test runner settings -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+               <forkMode>none</forkMode>
+               <systemProperties>
+                  <property>
+                     <name>infinispan.test.jgroups.protocol</name>
+                     <value>${infinispan.test.jgroups.protocol}</value>
+                  </property>
+                  <property>
+                     <name>bind.address</name>
+                     <value>127.0.0.1</value>
+                  </property>
+                  <property>
+                     <name>java.net.preferIPv4Stack</name>
+                     <value>true</value>
+                  </property>
+                  <property>
+                     <name>infinispan.test.jta.tm</name>
+                     <value>${infinispan.test.jta.tm}</value>
+                  </property>
+                  <property>
+                     <name>log4j.configuration</name>
+                     <value>test-log4j.xml</value>
+                  </property>
+               </systemProperties>
+               <trimStackTrace>false</trimStackTrace>
+               <properties>
+                  <property>
+                     <name>listener</name>
+                     <value>org.infinispan.test.fwk.DebuggingUnitTestNGListener</value>
+                  </property>
+               </properties>
+            </configuration>
+         </plugin>
+
+      </plugins>
+   </build>
+
+   <repositories>
+      <repository>
+         <id>JBoss.org Public Repository</id>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+         </snapshots>
+         <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+      </repository>
+   </repositories>
+
+   <profiles>
+      <profile>
+         <!-- This profile forces the use of the JBoss Transaction Manager rather than the test DummyTransactionManager  -->
+         <id>jbosstm</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+            <infinispan.test.jta.tm>jbosstm</infinispan.test.jta.tm>
+         </properties>
+      </profile>
+
+      <profile>
+         <!-- Uses a TCP configuration for the transport  -->
+         <id>tcp</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+            <infinispan.test.jgroups.protocol>tcp</infinispan.test.jgroups.protocol>
+         </properties>
+      </profile>
+
+      <profile>
+         <!-- Uses a UDP configuration for the transport  -->
+         <id>udp</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+            <infinispan.test.jgroups.protocol>udp</infinispan.test.jgroups.protocol>
+         </properties>
+      </profile>
+   </profiles>
+</project>
