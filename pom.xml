@@ -29,9 +29,9 @@
       </license>
    </licenses>
    <scm> 
-      <connection>scm:git:git@github.com:infinispan/infinispan_archetypes.git</connection> 
-      <url>scm:git:git@github.com:infinispan/infinispan_archetypes.git</url> 
-      <developerConnection>scm:git:git@github.com:infinispan/infinispan_archetypes.git</developerConnection>  
+      <connection>scm:git:git@github.com:infinispan/infinispan-archetypes.git</connection> 
+      <url>scm:git:git@github.com:infinispan/infinispan-archetypes.git</url> 
+      <developerConnection>scm:git:git@github.com:infinispan/infinispan-archetypes.git</developerConnection>  
   </scm> 
 
    <modules>
@@ -98,25 +98,4 @@
          <url>${jboss.snapshots.repo.url}</url>
       </snapshotRepository>
    </distributionManagement>
-
-   <repositories>
-      <repository>
-         <id>scala-tools.org</id>
-         <name>Scala-tools Maven2 Repository</name>
-         <url>http://scala-tools.org/repo-releases</url>
-         <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>never</updatePolicy>
-         </snapshots>
-      </repository>
-   </repositories>
-
-   <pluginRepositories>
-      <pluginRepository>
-         <id>scala-tools.org</id>
-         <name>Scala-tools Maven2 Repository</name>
-         <url>http://scala-tools.org/repo-releases</url>
-      </pluginRepository>
-   </pluginRepositories>
-
 </project>
