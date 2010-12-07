@@ -10,13 +10,18 @@
 
 
    <properties>
+      <!--
+         Which Infinispan version do you want to use?  Released versions are always more reliable than snapshots!
+      -->
+      <version.infinispan>5.0.0-SNAPSHOT</version.infinispan>
+
+
       <!-- the default JGroups protocol stack to use -->
       <infinispan.test.jgroups.protocol>tcp</infinispan.test.jgroups.protocol>
       <!-- the default transaction manager to use -->
       <infinispan.test.jta.tm>dummytm</infinispan.test.jta.tm>
 
       <!-- Versions of dependencies -->
-      <version.infinispan>${infinispan.version}</version.infinispan>
       <version.commons.logging>1.1</version.commons.logging>
       <version.easymock>2.4</version.easymock>
       <version.easymockclassext>2.4</version.easymockclassext>

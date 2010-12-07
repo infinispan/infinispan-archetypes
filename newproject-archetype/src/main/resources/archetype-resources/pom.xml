@@ -8,11 +8,18 @@
    <name>A sample project using Infinispan</name>
    <url>http://www.myorganization.org</url>
 
+   <properties>
+      <!--
+         Which Infinispan version do you want to use?  Released versions are always more reliable than snapshots!
+      -->
+      <version.infinispan>5.0.0-SNAPSHOT</version.infinispan>
+   </properties>
+
    <dependencies>
       <dependency>
          <groupId>org.infinispan</groupId>
          <artifactId>infinispan-core</artifactId>
-         <version>${infinispan.version}</version>
+         <version>${version.infinispan}</version>
       </dependency>
    </dependencies>
 
