@@ -9,11 +9,11 @@
    </parent>
 
    <groupId>org.infinispan.archetypes</groupId>
-   <artifactId>testcase</artifactId>
+   <artifactId>newproject-archetype</artifactId>
    <packaging>jar</packaging>
    <version>1.0.0-SNAPSHOT</version>
-   <name>Infinispan Sample Testcase Archetype</name>
-   <description>Builds a skeleton test case using Infinispan.  Very useful when reporting bugs.</description>
+   <name>Infinispan Sample Project Archetype</name>
+   <description>Builds a skeleton sample project using Infinispan.</description>
 
    <!-- these deps are here so that we can compile the sample classes -->
    <dependencies>
@@ -21,14 +21,6 @@
          <groupId>org.infinispan</groupId>
          <artifactId>infinispan-core</artifactId>
          <version>5.0.0-SNAPSHOT</version>
-      </dependency>
-
-      <dependency>
-         <groupId>org.infinispan</groupId>
-         <artifactId>infinispan-core</artifactId>
-         <version>5.0.0-SNAPSHOT</version>
-         <type>test-jar</type>
-         <scope>test</scope>
       </dependency>
    </dependencies>
 </project>

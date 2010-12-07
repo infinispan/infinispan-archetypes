@@ -20,8 +20,8 @@
    <url>http://community.jboss.org/wiki/InfinispanMavenArchetypes</url>
 
    <modules>
-      <module>sampleproject</module>
-      <module>testcase</module>
+      <module>newproject-archetype</module>
+      <module>testcase-archetype</module>
    </modules>
 </project>
 
