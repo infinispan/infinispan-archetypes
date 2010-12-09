@@ -1,4 +1,4 @@
-package ${groupId};
+package ${package};
 
 import org.infinispan.Cache;
 import org.infinispan.notifications.Listener;
