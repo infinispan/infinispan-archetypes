@@ -10,7 +10,7 @@
 
    <groupId>org.infinispan.archetypes</groupId>
    <artifactId>infinispan-archetypes</artifactId>
-   <version>1.0.3</version>
+   <version>1.0.4-SNAPSHOT</version>
 
    <name>Infinispan Archetypes</name>
    <description>Archetypes for the Infinispan project</description>
