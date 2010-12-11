@@ -99,7 +99,7 @@
                      </execution>
                   </executions>
                   <configuration>
-                     <mainClass>${groupId}.Application</mainClass>
+                     <mainClass>${package}.Application</mainClass>
                   </configuration>
                </plugin>
             </plugins>
