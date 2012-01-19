@@ -1,9 +1,12 @@
 package org.infinispan;
 
 
-import org.infinispan.config.Configuration;
+import org.infinispan.configuration.cache.CacheMode;
+import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.test.MultipleCacheManagersTest;
 import org.infinispan.test.TestingUtil;
+import org.infinispan.transaction.LockingMode;
+import org.infinispan.transaction.TransactionMode;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,22 +32,12 @@ public class SampleFunctionalTest extends MultipleCacheManagersTest {
    @Override
    protected void createCacheManagers() throws Throwable {
       // This method constructs and registers as many cache managers as you wish.
-      Configuration cfg = new Configuration();
-      cfg.setCacheMode(Configuration.CacheMode.DIST_SYNC);
-      cfg.setLockAcquisitionTimeout(100);
-
-      // One easy way to do this is the createCluster method which takes a configuration and the number of nodes to create.
-      createCluster(cfg, true, 5);
-
-      // or if you wish to use configuration defaults you could just do:
-//      createCluster(Configuration.CacheMode.DIST_SYNC, 5);
-//      createCluster(Configuration.CacheMode.DIST_SYNC, true, 5);
-
-      // alternately, you could manually create your own cache managers and register them:
-//      EmbeddedCacheManager ecm1 = TestCacheManagerFactory.createClusteredCacheManager(cfg);
-//      EmbeddedCacheManager ecm2 = TestCacheManagerFactory.createClusteredCacheManager(cfg);
-//      EmbeddedCacheManager ecm3 = TestCacheManagerFactory.createClusteredCacheManager(cfg);
-//      registerCacheManager(ecm1, ecm2, ecm3);
+      ConfigurationBuilder builder = getDefaultClusteredCacheConfig(CacheMode.DIST_SYNC, true);
+      
+      //create default caches
+      createCluster(builder, 2);
+      //alternatively you could used some named cache
+      //createClusteredCaches(2, "test_cache", builder);
    }
 
    @BeforeMethod

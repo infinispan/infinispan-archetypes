@@ -2,7 +2,7 @@ package org.infinispan;
 
 
 import org.easymock.EasyMock;
-import org.infinispan.config.Configuration;
+import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.distribution.ch.DefaultConsistentHash;
 import org.infinispan.manager.EmbeddedCacheManager;
 import org.infinispan.remoting.transport.Address;
@@ -14,6 +14,7 @@ import org.infinispan.test.SingleCacheManagerTest;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.HashSet;
 
 
 // ****************************************************************************************
@@ -34,14 +35,12 @@ public class SampleUnitTest extends SingleCacheManagerTest {
    protected EmbeddedCacheManager createCacheManager() throws Exception {
       // In this method, you should construct your cache manager instance using the TestCacheManagerFactory.
 
-      // First create a Configuration and configure your system.
-      Configuration cfg = new Configuration();
-      cfg.setLockAcquisitionTimeout(1000);
-      cfg.setConcurrencyLevel(100);
+      // First create a ConfigurationBuilder and configure your cache.
+      ConfigurationBuilder builder = new ConfigurationBuilder();
+      
 
-      // If you wish to use a transaction manager, you should pass the flag on to the TestCacheManagerFactory.  This
-      // allows the factory to pick the appropriate transaction manager at test execution time.
-      EmbeddedCacheManager cm = TestCacheManagerFactory.createCacheManager(cfg, true);
+      // create non-clustered cache manager
+      EmbeddedCacheManager cm = TestCacheManagerFactory.createCacheManager(builder);
 
       // the superclass will register this EmbeddedCacheManager and handle cleanup of resources for you.  It will also
       // create the default cache instance and make it available to your tests.
@@ -75,9 +74,9 @@ public class SampleUnitTest extends SingleCacheManagerTest {
       DefaultConsistentHash dch = new DefaultConsistentHash();
 
       // Making use of Mock Objects for non-critical components helps isolate the problem you are trying to test.
-      dch.setCaches(Arrays.asList(EasyMock.createNiceMock(Address.class),
+      dch.setCaches(new HashSet(Arrays.asList(EasyMock.createNiceMock(Address.class),
                                   EasyMock.createNiceMock(Address.class),
-                                  EasyMock.createNiceMock(Address.class)));
+                                  EasyMock.createNiceMock(Address.class))));
 
       List<Address> a = dch.locate("somekey", 2);
       assert a.size() == 2 : "Was expecting 2 entries in the location list";
