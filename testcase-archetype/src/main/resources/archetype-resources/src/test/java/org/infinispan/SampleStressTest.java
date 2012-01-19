@@ -1,7 +1,7 @@
 package org.infinispan;
 
 
-import org.infinispan.config.Configuration;
+import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.manager.EmbeddedCacheManager;
 import org.infinispan.test.fwk.TestCacheManagerFactory;
 import org.testng.annotations.AfterMethod;
@@ -26,16 +26,13 @@ public class SampleStressTest extends SingleCacheManagerTest {
 
    @Override
    protected EmbeddedCacheManager createCacheManager() throws Exception {
-      // In this method, you should construct your cache manager instance using the TestCacheManagerFactory.
 
-      // First create a Configuration and configure your system.
-      Configuration cfg = new Configuration();
-      cfg.setLockAcquisitionTimeout(1000);
-      cfg.setConcurrencyLevel(100);
+      // First create a ConfigurationBuilder and configure your cache.
+      ConfigurationBuilder builder = new ConfigurationBuilder();
+      
 
-      // If you wish to use a transaction manager, you should pass the flag on to the TestCacheManagerFactory.  This
-      // allows the factory to pick the appropriate transaction manager at test execution time.
-      EmbeddedCacheManager cm = TestCacheManagerFactory.createCacheManager(cfg, true);
+      // create non-clustered cache manager
+      EmbeddedCacheManager cm = TestCacheManagerFactory.createCacheManager(builder);
 
       // the superclass will register this EmbeddedCacheManager and handle cleanup of resources for you.  It will also
       // create the default cache instance and make it available to your tests.
