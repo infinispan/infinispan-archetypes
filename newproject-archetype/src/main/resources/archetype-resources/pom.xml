@@ -12,7 +12,7 @@
       <!--
          Which Infinispan version do you want to use?  Released versions are always more reliable than snapshots!
       -->
-      <version.infinispan>5.1.5.FINAL</version.infinispan>
+      <version.infinispan>5.1.6.FINAL</version.infinispan>
    </properties>
 
    <dependencies>
