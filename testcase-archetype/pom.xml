@@ -19,13 +19,13 @@
       <dependency>
          <groupId>org.infinispan</groupId>
          <artifactId>infinispan-core</artifactId>
-         <version>5.2.0.FINAL</version>
+         <version>5.2.1.Final</version>
       </dependency>
 
       <dependency>
          <groupId>org.infinispan</groupId>
          <artifactId>infinispan-core</artifactId>
-         <version>5.2.0.FINAL</version>
+         <version>5.2.1.Final</version>
          <type>test-jar</type>
          <scope>test</scope>
       </dependency>
