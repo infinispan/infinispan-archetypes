@@ -13,7 +13,7 @@
       <!--
          Which Infinispan version do you want to use?  Released versions are always more reliable than snapshots!
       -->
-      <version.infinispan>5.2.1.Final</version.infinispan>
+      <version.infinispan>5.3.0.Final</version.infinispan>
 
 
       <!-- the default JGroups protocol stack to use -->
@@ -27,7 +27,7 @@
       <version.easymockclassext>2.4</version.easymockclassext>
       <version.jbossjta>4.16.2.Final</version.jbossjta>
       <version.log4j>1.2.16</version.log4j>
-      <version.testng>5.11</version.testng>
+      <version.testng>6.8</version.testng>
       <version.xstream>1.4.1</version.xstream>
    </properties>
 
