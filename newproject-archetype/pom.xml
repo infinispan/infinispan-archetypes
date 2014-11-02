@@ -8,7 +8,6 @@
       <relativePath>../pom.xml</relativePath>
    </parent>
 
-   <groupId>org.infinispan.archetypes</groupId>
    <artifactId>newproject-archetype</artifactId>
    <packaging>jar</packaging>
    <name>Infinispan Sample Project Archetype</name>
@@ -18,8 +17,8 @@
    <dependencies>
       <dependency>
          <groupId>org.infinispan</groupId>
-         <artifactId>infinispan-core</artifactId>
-         <version>5.3.0.Final</version>
+         <artifactId>infinispan-embedded</artifactId>
+         <version>7.0.0.CR2</version>
       </dependency>
    </dependencies>
 </project>

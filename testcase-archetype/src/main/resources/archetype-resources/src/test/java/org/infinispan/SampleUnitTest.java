@@ -2,8 +2,10 @@ package org.infinispan;
 
 
 import org.easymock.EasyMock;
+import org.infinispan.commons.hash.MurmurHash3;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
-import org.infinispan.distribution.ch.DefaultConsistentHash;
+import org.infinispan.distribution.ch.impl.DefaultConsistentHash;
+import org.infinispan.distribution.ch.impl.DefaultConsistentHashFactory;
 import org.infinispan.manager.EmbeddedCacheManager;
 import org.infinispan.remoting.transport.Address;
 import org.infinispan.test.fwk.TestCacheManagerFactory;
@@ -14,13 +16,12 @@ import org.infinispan.test.SingleCacheManagerTest;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.HashSet;
 
 
 // ****************************************************************************************
 // This sample test should be used as a starting point when writing tests for Infinispan.
 //
-// See http://community.jboss.org/wiki/ParallelTestSuite for more information.
+// See http://infinispan.org/docs/7.0.x/contributing/contributing.html#_the_parallel_test_suite for more information.
 // ****************************************************************************************
 
 
@@ -37,7 +38,7 @@ public class SampleUnitTest extends SingleCacheManagerTest {
 
       // First create a ConfigurationBuilder and configure your cache.
       ConfigurationBuilder builder = new ConfigurationBuilder();
-      
+
 
       // create non-clustered cache manager
       EmbeddedCacheManager cm = TestCacheManagerFactory.createCacheManager(builder);
@@ -71,14 +72,16 @@ public class SampleUnitTest extends SingleCacheManagerTest {
 
    // Internal components can be tested in Unit Tests as well.
    public void testSomeInternalComponent() {
-      DefaultConsistentHash dch = new DefaultConsistentHash();
+      DefaultConsistentHashFactory chFactory = new DefaultConsistentHashFactory();
 
       // Making use of Mock Objects for non-critical components helps isolate the problem you are trying to test.
-      dch.setCaches(new HashSet(Arrays.asList(EasyMock.createNiceMock(Address.class),
-                                  EasyMock.createNiceMock(Address.class),
-                                  EasyMock.createNiceMock(Address.class))));
+      List<Address> addresses = Arrays.asList(EasyMock.createNiceMock(Address.class),
+                                              EasyMock.createNiceMock(Address.class),
+                                              EasyMock.createNiceMock(Address.class));
 
-      List<Address> a = dch.locate("somekey", 2);
+      DefaultConsistentHash dch = chFactory.create(new MurmurHash3(), 2, 50, addresses, null);
+
+      List<Address> a = dch.locateOwners("somekey");
       assert a.size() == 2 : "Was expecting 2 entries in the location list";
    }
 }

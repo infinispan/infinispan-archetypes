@@ -3,35 +3,29 @@
 <!--
 
    This is just a very simplistic example configuration file.  For more information, please see
-   http://docs.jboss.org/infinispan/5.3/apidocs/config.html
+   http://docs.jboss.org/infinispan/7.0/configdocs/
 
 -->
 
 <infinispan
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="urn:infinispan:config:5.3 http://www.infinispan.org/schemas/infinispan-config-5.3.xsd"
-      xmlns="urn:infinispan:config:5.3">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:7.0 http://infinispan.org/schemas/infinispan-config-7.0.xsd"
+        xmlns="urn:infinispan:config:7.0">
 
-   <global>
-      <globalJmxStatistics enabled="true" jmxDomain="Infinispan" />
-   </global>
-
-   <default>
-      <locking concurrencyLevel="5000" />
-   </default>
-
-   <namedCache name="stock tickers">
-      <locking isolationLevel="REPEATABLE_READ" useLockStriping="false" lockAcquisitionTimeout="10000" />
-   </namedCache>
-
-   <namedCache name="wine cache">
-      <locking lockAcquisitionTimeout="500" />
-      <eviction maxEntries="500" wakeUpInterval="100" />
-      <lazyDeserialization enabled="true" />
-   </namedCache>
-
-   <namedCache name="another">
-      <expiration lifespan="1000" maxIdle="500" />
-   </namedCache>
+   <cache-container default-cache="default" statistics="true">
+      <jmx domain="Infinispan" />
+      <local-cache name="stock tickers">
+         <locking isolation="REPEATABLE_READ" striping="false" />
+      </local-cache>
+      <local-cache name="wine cache">
+         <locking isolation="REPEATABLE_READ" acquire-timeout="500" />
+         <eviction max-entries="500" />
+         <expiration interval="100" />
+         <store-as-binary keys="true" values="true" />
+      </local-cache>
+      <local-cache name="another">
+         <expiration lifespan="1000" max-idle="500" />
+      </local-cache>
+   </cache-container>
 
 </infinispan>
