@@ -2,46 +2,35 @@
 
 <!--
 
-   This is just a very simplistic example configuration file.  For more information, please see
-   http://docs.jboss.org/infinispan/5.3/configdocs/infinispan-config-5.3.html
+          This is just a very simplistic example configuration file.  For more information, please see
+          http://docs.jboss.org/infinispan/7.0/configdocs/
 
 -->
 
 <infinispan
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="urn:infinispan:config:5.3 http://www.infinispan.org/schemas/infinispan-config-5.3.xsd"
-      xmlns="urn:infinispan:config:5.3">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:7.0 http://infinispan.org/schemas/infinispan-config-7.0.xsd"
+        xmlns="urn:infinispan:config:7.0">
 
-   <global>
-      <globalJmxStatistics enabled="true" jmxDomain="Infinispan" />
-      <transport>
-         <properties>
-            <property name="configurationFile" value="jgroups-ec2.xml" />
-         </properties>
-      </transport>
-   </global>
+    <jgroups>
+        <stack-file name="ec2" path="/default-configs/default-jgroups-ec2.xml"/>
+    </jgroups>
 
-   <default>
-      <locking concurrencyLevel="5000" />
-      <clustering mode="distributed">
-         <sync />
-      </clustering>
-   </default>
+    <cache-container default-cache="default" statistics="true">
 
-   <namedCache name="stock tickers">
-      <locking isolationLevel="REPEATABLE_READ" useLockStriping="false" lockAcquisitionTimeout="10000" />
-   </namedCache>
+        <jmx domain="Infinispan"/>
+        <distributed-cache name="stock tickers" mode="SYNC">
+            <locking isolation="REPEATABLE_READ" striping="false"/>
+        </distributed-cache>
+        <distributed-cache name="wine cache" mode="SYNC">
+            <locking isolation="REPEATABLE_READ" acquire-timeout="500"/>
+            <eviction max-entries="500"/>
+            <expiration interval="100"/>
+            <store-as-binary keys="true" values="true"/>
+        </distributed-cache>
+        <replicated-cache name="another" mode="ASYNC" queue-size="100">
+            <expiration lifespan="1000" max-idle="500"/>
+        </replicated-cache>
+    </cache-container>
 
-   <namedCache name="wine cache">
-      <locking lockAcquisitionTimeout="500" />
-      <eviction maxEntries="500" wakeUpInterval="100" />
-      <lazyDeserialization enabled="true" />
-   </namedCache>
-
-   <namedCache name="another">
-      <expiration lifespan="1000" maxIdle="500" />
-      <clustering mode="replicated">
-         <async useReplQueue="true" replQueueMaxElements="100" />
-      </clustering>
-   </namedCache>
 </infinispan>

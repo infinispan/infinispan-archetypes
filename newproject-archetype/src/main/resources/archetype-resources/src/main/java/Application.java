@@ -9,14 +9,14 @@ import org.infinispan.notifications.cachelistener.annotation.CacheEntryVisited;
 import org.infinispan.notifications.cachelistener.event.CacheEntryEvent;
 import org.infinispan.notifications.cachelistener.event.CacheEntryVisitedEvent;
 import org.infinispan.notifications.cachemanagerlistener.event.Event;
-import org.infinispan.util.concurrent.NotifyingFuture;
+import org.infinispan.commons.util.concurrent.NotifyingFuture;
 
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Sample application code.  For more examples visit http://community.jboss.org/wiki/5minutetutorialonInfinispan
+ * Sample application code.  For more examples visit the Quick Starts section on http://infinispan.org/documentation/
  */
 public class Application {
 
@@ -70,7 +70,7 @@ public class Application {
       }
       System.out.println("  Everything stored!");
 
-      // TIP: For more examples on using the asynchronous API, visit http://community.jboss.org/wiki/AsynchronousAPI
+      // TIP: For more examples on using the asynchronous API, visit http://infinispan.org/docs/7.0.x/user_guide/user_guide.html#_Listeners_and_notifications_section
    }
 
    public void registeringListeners() {
@@ -103,6 +103,7 @@ public class Application {
    }
 
    @Listener
+   @SuppressWarnings("unused")
    public class MyListener {
 
       @CacheEntryCreated
@@ -114,7 +115,7 @@ public class Application {
       }
 
       @CacheEntryVisited
-      public void pribtDetailsOnVisit(CacheEntryVisitedEvent e) {
+      public void printDetailsOnVisit(CacheEntryVisitedEvent e) {
          System.out.printf("Thread %s has visited an entry in the cache named %s under key %s!\n",
                            Thread.currentThread().getName(), e.getCache().getName(), e.getKey());
       }

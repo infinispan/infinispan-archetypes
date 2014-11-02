@@ -18,7 +18,8 @@ public class SampleCacheContainer {
 
    // ************************************************************************************************************
    // This should point to the Infinispan configuration file.  Either an absolute path or the name of a config
-   // file in your classpath could be used.  See http://community.jboss.org/wiki/Configuringcache for more details.
+   // file in your classpath could be used.  See http://infinispan.org/docs/7.0.x/user_guide/user_guide.html#_configuring_cache
+   // for more details.
    // ************************************************************************************************************
 
    // This skeleton project ships with 4 different Infinispan configurations.  Uncomment the one most appropriate to you.

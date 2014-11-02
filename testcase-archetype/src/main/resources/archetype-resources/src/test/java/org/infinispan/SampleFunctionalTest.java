@@ -5,8 +5,6 @@ import org.infinispan.configuration.cache.CacheMode;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.test.MultipleCacheManagersTest;
 import org.infinispan.test.TestingUtil;
-import org.infinispan.transaction.LockingMode;
-import org.infinispan.transaction.TransactionMode;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,12 +16,12 @@ import java.util.List;
 // ****************************************************************************************
 // This sample test should be used as a starting point when writing tests for Infinispan.
 //
-// See http://community.jboss.org/wiki/ParallelTestSuite for more information.
+// See http://infinispan.org/docs/7.0.x/contributing/contributing.html#_the_parallel_test_suite for more information.
 // ****************************************************************************************
 
 
 // All tests must be annotated with @Test and contain the groups and testName attributes.
-@Test (groups = "functional", testName = "SampleFunctionalTest")
+@Test(groups = "functional", testName = "SampleFunctionalTest")
 
 // This test class extends MultipleCacheManagersTest which is designed to test a multiple node instances in a cluster.
 // Use SingleCacheManagerTest for tests designed to test a single, isolated Infinispan node.
@@ -33,7 +31,7 @@ public class SampleFunctionalTest extends MultipleCacheManagersTest {
    protected void createCacheManagers() throws Throwable {
       // This method constructs and registers as many cache managers as you wish.
       ConfigurationBuilder builder = getDefaultClusteredCacheConfig(CacheMode.DIST_SYNC, true);
-      
+
       //create default caches
       createCluster(builder, 2);
       //alternatively you could used some named cache
