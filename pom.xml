@@ -5,12 +5,12 @@
    <parent>
       <groupId>org.infinispan</groupId>
       <artifactId>infinispan-parent</artifactId>
-      <version>7.0.0.Final</version>
+      <version>7.1.0.Final</version>
    </parent>
 
    <groupId>org.infinispan.archetypes</groupId>
    <artifactId>infinispan-archetypes</artifactId>
-   <version>1.0.15-SNAPSHOT</version>
+   <version>1.0.16-SNAPSHOT</version>
 
    <name>Infinispan Archetypes</name>
    <description>Archetypes for the Infinispan project</description>
