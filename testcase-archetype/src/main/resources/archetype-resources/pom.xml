@@ -13,7 +13,7 @@
       <!--
          Which Infinispan version do you want to use?  Released versions are always more reliable than snapshots!
       -->
-      <version.infinispan>7.1.0.Final</version.infinispan>
+      <version.infinispan>7.2.0.Final</version.infinispan>
 
 
       <!-- the default JGroups protocol stack to use -->

@@ -4,7 +4,7 @@
    <parent>
       <groupId>org.infinispan.archetypes</groupId>
       <artifactId>infinispan-archetypes</artifactId>
-      <version>1.0.16-SNAPSHOT</version>
+      <version>1.0.17-SNAPSHOT</version>
       <relativePath>../pom.xml</relativePath>
    </parent>
 
@@ -18,13 +18,13 @@
       <dependency>
          <groupId>org.infinispan</groupId>
          <artifactId>infinispan-embedded</artifactId>
-         <version>7.1.0.Final</version>
+         <version>7.2.0.Final</version>
       </dependency>
 
       <dependency>
          <groupId>org.infinispan</groupId>
          <artifactId>infinispan-core</artifactId>
-         <version>7.0.0.Final</version>
+         <version>7.2.0.Final</version>
          <type>test-jar</type>
          <scope>test</scope>
       </dependency>
