@@ -3,23 +3,23 @@
 <!--
 
    This is just a very simplistic example configuration file.  For more information, please see
-   http://docs.jboss.org/infinispan/7.0/configdocs/
+   http://docs.jboss.org/infinispan/8.1/configdocs/
 
 -->
 
 <infinispan
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="urn:infinispan:config:7.0 http://infinispan.org/schemas/infinispan-config-7.0.xsd"
-        xmlns="urn:infinispan:config:7.0">
+        xsi:schemaLocation="urn:infinispan:config:8.1 http://infinispan.org/schemas/infinispan-config-8.1.xsd"
+        xmlns="urn:infinispan:config:8.1">
 
    <cache-container default-cache="default" statistics="true">
       <jmx domain="Infinispan" />
-      <local-cache name="stock tickers">
+      <local-cache name="stockTickers">
          <locking isolation="REPEATABLE_READ" striping="false" />
       </local-cache>
-      <local-cache name="wine cache">
+      <local-cache name="wineCache">
          <locking isolation="REPEATABLE_READ" acquire-timeout="500" />
-         <eviction max-entries="500" />
+         <eviction size="500" />
          <expiration interval="100" />
          <store-as-binary keys="true" values="true" />
       </local-cache>
