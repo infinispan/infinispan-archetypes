@@ -21,7 +21,7 @@ import java.util.List;
 // ****************************************************************************************
 // This sample test should be used as a starting point when writing tests for Infinispan.
 //
-// See http://infinispan.org/docs/7.0.x/contributing/contributing.html#_the_parallel_test_suite for more information.
+// See http://infinispan.org/docs/8.1.x/contributing/contributing.html#_the_parallel_test_suite for more information.
 // ****************************************************************************************
 
 
@@ -79,7 +79,7 @@ public class SampleUnitTest extends SingleCacheManagerTest {
                                               EasyMock.createNiceMock(Address.class),
                                               EasyMock.createNiceMock(Address.class));
 
-      DefaultConsistentHash dch = chFactory.create(new MurmurHash3(), 2, 50, addresses, null);
+      DefaultConsistentHash dch = chFactory.create(MurmurHash3.getInstance(), 2, 50, addresses, null);
 
       List<Address> a = dch.locateOwners("somekey");
       assert a.size() == 2 : "Was expecting 2 entries in the location list";

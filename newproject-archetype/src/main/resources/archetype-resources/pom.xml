@@ -12,7 +12,7 @@
       <!--
          Which Infinispan version do you want to use?  Released versions are always more reliable than snapshots!
       -->
-      <version.infinispan>7.2.0.Final</version.infinispan>
+      <version.infinispan>8.1.0.Final</version.infinispan>
    </properties>
 
    <dependencies>
@@ -25,7 +25,7 @@
 
    <build>
       <plugins>
-         <!-- enforce java 1.7 and maven 3 -->
+         <!-- enforce java 1.8 and maven 3 -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
@@ -39,7 +39,7 @@
                   <configuration>
                      <rules>
                         <requireJavaVersion>
-                           <version>[1.7,)</version>
+                           <version>[1.8,)</version>
                         </requireJavaVersion>
                         <requireMavenVersion>
                            <version>[3.0.0,)</version>
@@ -50,14 +50,14 @@
             </executions>
          </plugin>
 
-         <!-- by default, compile to JDK 1.7 compatibility -->
+         <!-- by default, compile to JDK 1.8 compatibility -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.0</version>
             <configuration>
-               <source>1.7</source>
-               <target>1.7</target>
+               <source>1.8</source>
+               <target>1.8</target>
                <encoding>UTF-8</encoding>
             </configuration>
          </plugin>

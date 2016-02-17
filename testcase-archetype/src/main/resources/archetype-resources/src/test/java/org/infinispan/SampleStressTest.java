@@ -13,7 +13,7 @@ import org.infinispan.test.SingleCacheManagerTest;
 // ****************************************************************************************
 // This sample test should be used as a starting point when writing tests for Infinispan.
 //
-// See http://infinispan.org/docs/7.0.x/contributing/contributing.html#_the_parallel_test_suite for more information.
+// See http://infinispan.org/docs/8.1.x/contributing/contributing.html#_the_parallel_test_suite for more information.
 // ****************************************************************************************
 
 
