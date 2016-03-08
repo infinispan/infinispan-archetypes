@@ -1,4 +1,4 @@
-package ${package};
+package infinispan;
 
 import org.infinispan.Cache;
 import org.infinispan.notifications.Listener;
@@ -38,7 +38,7 @@ public class Application {
 
    public void lifespans() throws InterruptedException {
       System.out.println("\n\n2.  Demonstrating usage of Infinispan with expirable entries.");
-      Cache<String, Float> stocksCache = SampleCacheContainer.getCache("stock tickers");
+      Cache<String, Float> stocksCache = SampleCacheContainer.getCache("stockTickers");
       System.out.println("  Storing key 'RHT' for 10 seconds.");
       stocksCache.put("RHT", 45.0f, 10, TimeUnit.SECONDS);
       System.out.printf("  Checking for existence of key.  Is it there? %s\n", stocksCache.containsKey("RHT"));
@@ -50,7 +50,7 @@ public class Application {
 
    public void asyncOperations() {
       System.out.println("\n\n3.  Demonstrating asynchronous operations - where writes can be done in a non-blocking fashion.");
-      Cache<String, Integer> wineCache = SampleCacheContainer.getCache("wine cache");
+      Cache<String, Integer> wineCache = SampleCacheContainer.getCache("wineCache");
 
       System.out.println("  Put #1");
       NotifyingFuture<Integer> f1 = wineCache.putAsync("Pinot Noir", 300);
@@ -70,7 +70,7 @@ public class Application {
       }
       System.out.println("  Everything stored!");
 
-      // TIP: For more examples on using the asynchronous API, visit http://infinispan.org/docs/7.0.x/user_guide/user_guide.html#_Listeners_and_notifications_section
+      // TIP: For more examples on using the asynchronous API, visit http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#_Listeners_and_notifications_section
    }
 
    public void registeringListeners() {

@@ -3,14 +3,14 @@
 <!--
 
           This is just a very simplistic example configuration file.  For more information, please see
-          http://docs.jboss.org/infinispan/7.0/configdocs/
+          http://docs.jboss.org/infinispan/8.2/configdocs/
 
 -->
 
 <infinispan
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="urn:infinispan:config:7.0 http://infinispan.org/schemas/infinispan-config-7.0.xsd"
-        xmlns="urn:infinispan:config:7.0">
+        xsi:schemaLocation="urn:infinispan:config:8.2 http://infinispan.org/schemas/infinispan-config-8.2.xsd"
+        xmlns="urn:infinispan:config:8.2">
 
     <jgroups>
         <stack-file name="ec2" path="/default-configs/default-jgroups-ec2.xml"/>
@@ -19,12 +19,12 @@
     <cache-container default-cache="default" statistics="true">
 
         <jmx domain="Infinispan"/>
-        <distributed-cache name="stock tickers" mode="SYNC">
+        <distributed-cache name="stockTickers" mode="SYNC">
             <locking isolation="REPEATABLE_READ" striping="false"/>
         </distributed-cache>
-        <distributed-cache name="wine cache" mode="SYNC">
+        <distributed-cache name="wineCache" mode="SYNC">
             <locking isolation="REPEATABLE_READ" acquire-timeout="500"/>
-            <eviction max-entries="500"/>
+            <eviction size="500" />
             <expiration interval="100"/>
             <store-as-binary keys="true" values="true"/>
         </distributed-cache>

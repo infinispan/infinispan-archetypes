@@ -13,7 +13,7 @@
       <!--
          Which Infinispan version do you want to use?  Released versions are always more reliable than snapshots!
       -->
-      <version.infinispan>7.2.0.Final</version.infinispan>
+      <version.infinispan>8.2.0.Final</version.infinispan>
 
 
       <!-- the default JGroups protocol stack to use -->
@@ -25,10 +25,10 @@
        <version.commons.logging>1.2</version.commons.logging>
        <version.easymock>3.2</version.easymock>
        <version.easymockclassext>3.2</version.easymockclassext>
-       <version.jbossjta>4.16.6.Final</version.jbossjta>
+       <version.jbossjta>5.0.4.Final</version.jbossjta>
        <version.log4j>1.2.17</version.log4j>
-       <version.testng>6.8</version.testng>
-       <version.xstream>1.4.7</version.xstream>
+       <version.testng>6.8.8</version.testng>
+       <version.xstream>1.4.8</version.xstream>
    </properties>
 
    <dependencies>
@@ -66,8 +66,8 @@
          <scope>test</scope>
       </dependency>
       <dependency>
-         <groupId>org.jboss.jbossts</groupId>
-         <artifactId>jbossjta</artifactId>
+         <groupId>org.jboss.narayana.jta</groupId>
+         <artifactId>narayana-jta</artifactId>
          <version>${version.jbossjta}</version>
          <scope>test</scope>
          <exclusions>
@@ -113,7 +113,7 @@
             </exclusion>
             <exclusion>
                <artifactId>netty</artifactId>
-               <groupId>org.jboss.netty</groupId>
+               <groupId>io.netty</groupId>
             </exclusion>
             <exclusion>
                <artifactId>wrapper</artifactId>
@@ -172,10 +172,6 @@
                <groupId>org.jboss.spec.javax.resource</groupId>
             </exclusion>
             <exclusion>
-               <artifactId>jboss-transaction-spi</artifactId>
-               <groupId>org.jboss.integration</groupId>
-            </exclusion>
-            <exclusion>
                <artifactId>jboss-remoting</artifactId>
                <groupId>org.jboss.remoting</groupId>
             </exclusion>
@@ -211,6 +207,14 @@
                <artifactId>jboss-transaction-api_1.1_spec</artifactId>
                <groupId>org.jboss.spec.javax.transaction</groupId>
             </exclusion>
+            <exclusion>
+               <artifactId>byteman</artifactId>
+               <groupId>org.jboss.byteman</groupId>
+            </exclusion>
+            <exclusion>
+               <artifactId>byteman-submit</artifactId>
+               <groupId>org.jboss.byteman</groupId>
+            </exclusion>
          </exclusions>
       </dependency>
 
@@ -238,7 +242,7 @@
 
    <build>
       <plugins>
-         <!-- enforce java 1.7 and maven 3.0.0 -->
+         <!-- enforce java 1.8 and maven 3.0.0 -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
@@ -252,7 +256,7 @@
                   <configuration>
                      <rules>
                         <requireJavaVersion>
-                           <version>[1.7,)</version>
+                           <version>[1.8,)</version>
                         </requireJavaVersion>
                         <requireMavenVersion>
                            <version>[3.0.0,)</version>
@@ -263,14 +267,14 @@
             </executions>
          </plugin>
 
-         <!-- by default, compile to JDK 1.7 compatibility -->
+         <!-- by default, compile to JDK 1.8 compatibility -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.1</version>
             <configuration>
-               <source>1.7</source>
-               <target>1.7</target>
+               <source>1.8</source>
+               <target>1.8</target>
                <encoding>UTF-8</encoding>
             </configuration>
          </plugin>
