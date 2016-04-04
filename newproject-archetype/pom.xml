@@ -18,7 +18,7 @@
       <dependency>
          <groupId>org.infinispan</groupId>
          <artifactId>infinispan-embedded</artifactId>
-         <version>8.2.0.Final</version>
+         <version>8.2.1.Final</version>
       </dependency>
    </dependencies>
 </project>
