@@ -3,9 +3,9 @@
    <modelVersion>4.0.0</modelVersion>
 
    <parent>
-      <groupId>org.infinispan</groupId>
-      <artifactId>infinispan-parent</artifactId>
-      <version>8.2.1.Final</version>
+      <groupId>org.jboss</groupId>
+      <artifactId>jboss-parent</artifactId>
+      <version>21</version>
    </parent>
 
    <groupId>org.infinispan.archetypes</groupId>
