@@ -39,6 +39,7 @@
    <modules>
       <module>newproject-archetype</module>
       <module>testcase-archetype</module>
+      <module>store-archetype</module>
    </modules>
    <build>
       <plugins>
