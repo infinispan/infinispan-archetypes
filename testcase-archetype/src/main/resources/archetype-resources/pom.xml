@@ -13,7 +13,8 @@
       <!--
          Which Infinispan version do you want to use?  Released versions are always more reliable than snapshots!
       -->
-      <version.infinispan>8.2.1.Final</version.infinispan>
+      <version.infinispan>9.0.0.Final</version.infinispan>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 
       <!-- the default JGroups protocol stack to use -->
@@ -22,13 +23,13 @@
       <infinispan.test.jta.tm>dummytm</infinispan.test.jta.tm>
 
       <!-- Versions of dependencies -->
-       <version.commons.logging>1.2</version.commons.logging>
-       <version.easymock>3.2</version.easymock>
-       <version.easymockclassext>3.2</version.easymockclassext>
-       <version.jbossjta>5.0.4.Final</version.jbossjta>
-       <version.log4j>1.2.17</version.log4j>
-       <version.testng>6.8.8</version.testng>
-       <version.xstream>1.4.8</version.xstream>
+      <version.commons.logging>1.2</version.commons.logging>
+      <version.easymock>3.4</version.easymock>
+      <version.easymockclassext>3.2</version.easymockclassext>
+      <version.jbossjta>5.5.5.Final</version.jbossjta>
+      <version.log4j>1.2.17</version.log4j>
+      <version.testng>6.9.10</version.testng>
+      <version.xstream>1.4.9</version.xstream>
    </properties>
 
    <dependencies>
@@ -283,8 +284,10 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.19.1</version>
             <configuration>
-               <forkMode>none</forkMode>
+               <forkCount>1</forkCount>
+               <reuseForks>true</reuseForks>
                <systemProperties>
                   <property>
                      <name>infinispan.test.jgroups.protocol</name>
@@ -308,12 +311,6 @@
                   </property>
                </systemProperties>
                <trimStackTrace>false</trimStackTrace>
-               <properties>
-                  <property>
-                     <name>listener</name>
-                     <value>org.infinispan.test.fwk.DebuggingUnitTestNGListener</value>
-                  </property>
-               </properties>
             </configuration>
          </plugin>
 
