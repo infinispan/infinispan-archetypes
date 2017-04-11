@@ -11,7 +11,7 @@ To utilise the archetypes utilise the following command:
 mvn archetype:generate \
     -DarchetypeGroupId=org.infinispan.archetypes \
     -DarchetypeArtifactId=<archetype-name> \
-    -DarchetypeVersion=1.0.18 \
+    -DarchetypeVersion=1.0.19 \
     -DarchetypeRepository=http://repository.jboss.org/nexus/content/groups/public
 ```
 
