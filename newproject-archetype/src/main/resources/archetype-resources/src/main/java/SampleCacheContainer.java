@@ -18,7 +18,7 @@ public class SampleCacheContainer {
 
    // ************************************************************************************************************
    // This should point to the Infinispan configuration file.  Either an absolute path or the name of a config
-   // file in your classpath could be used.  See http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#_configuring_cache
+   // file in your classpath could be used.  See http://infinispan.org/docs/9.0.x/user_guide/user_guide.html#_configuring_cache
    // for more details.
    // ************************************************************************************************************
 

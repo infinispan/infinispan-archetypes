@@ -3,9 +3,9 @@
    <modelVersion>4.0.0</modelVersion>
 
    <parent>
-      <groupId>org.infinispan</groupId>
-      <artifactId>infinispan-parent</artifactId>
-      <version>8.2.1.Final</version>
+      <groupId>org.jboss</groupId>
+      <artifactId>jboss-parent</artifactId>
+      <version>21</version>
    </parent>
 
    <groupId>org.infinispan.archetypes</groupId>
@@ -23,9 +23,10 @@
 
    <licenses>
       <license>
-         <name>GNU Lesser General Public License</name>
-         <url>http://www.gnu.org/copyleft/lesser.html</url>
+         <name>Apache License, Version 2.0</name>
+         <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
          <distribution>repo</distribution>
+         <comments>A business-friendly OSS license</comments>
       </license>
    </licenses>
    <scm> 
@@ -38,6 +39,7 @@
    <modules>
       <module>newproject-archetype</module>
       <module>testcase-archetype</module>
+      <module>store-archetype</module>
    </modules>
    <build>
       <plugins>
@@ -46,7 +48,7 @@
             <artifactId>maven-release-plugin</artifactId>
             <version>2.5</version>
          </plugin>
-         <!-- by default, compile to JDK 1.7 compatibility (individual modules and/or user can override) -->
+         <!-- by default, compile to JDK 1.8 compatibility (individual modules and/or user can override) -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
@@ -60,7 +62,7 @@
                   <configuration>
                      <rules>
                         <requireJavaVersion>
-                           <version>[1.7,)</version>
+                           <version>[1.8,)</version>
                         </requireJavaVersion>
                         <requireMavenVersion>
                            <version>[3.0.0,)</version>
@@ -70,14 +72,14 @@
                </execution>
             </executions>
          </plugin>
-         <!-- by default, compile to JDK 1.6 compatibility (individual modules and/or user can override) -->
+         <!-- by default, compile to JDK 1.8 compatibility (individual modules and/or user can override) -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>2.3.1</version>
             <configuration>
-               <source>1.7</source>
-               <target>1.7</target>
+               <source>1.8</source>
+               <target>1.8</target>
                <encoding>UTF-8</encoding>
             </configuration>
          </plugin>

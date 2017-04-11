@@ -1,4 +1,8 @@
-package infinispan;
+package ${package};
+
+import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.infinispan.Cache;
 import org.infinispan.notifications.Listener;
@@ -8,12 +12,6 @@ import org.infinispan.notifications.cachelistener.annotation.CacheEntryRemoved;
 import org.infinispan.notifications.cachelistener.annotation.CacheEntryVisited;
 import org.infinispan.notifications.cachelistener.event.CacheEntryEvent;
 import org.infinispan.notifications.cachelistener.event.CacheEntryVisitedEvent;
-import org.infinispan.notifications.cachemanagerlistener.event.Event;
-import org.infinispan.commons.util.concurrent.NotifyingFuture;
-
-import java.util.Arrays;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Sample application code.  For more examples visit the Quick Starts section on http://infinispan.org/documentation/
@@ -53,14 +51,14 @@ public class Application {
       Cache<String, Integer> wineCache = SampleCacheContainer.getCache("wineCache");
 
       System.out.println("  Put #1");
-      NotifyingFuture<Integer> f1 = wineCache.putAsync("Pinot Noir", 300);
+      CompletableFuture<Integer> f1 = wineCache.putAsync("Pinot Noir", 300);
       System.out.println("  Put #1");
-      NotifyingFuture<Integer> f2 = wineCache.putAsync("Merlot", 120);
+      CompletableFuture<Integer> f2 = wineCache.putAsync("Merlot", 120);
       System.out.println("  Put #1");
-      NotifyingFuture<Integer> f3 = wineCache.putAsync("Chardonnay", 180);
+      CompletableFuture<Integer> f3 = wineCache.putAsync("Chardonnay", 180);
 
       // now poll the futures to make sure any remote calls have completed!
-      for (NotifyingFuture<Integer> f: Arrays.asList(f1, f2, f3)) {
+      for (CompletableFuture<Integer> f: Arrays.asList(f1, f2, f3)) {
          try {
             System.out.println("  Checking future... ");
             f.get();
@@ -70,7 +68,7 @@ public class Application {
       }
       System.out.println("  Everything stored!");
 
-      // TIP: For more examples on using the asynchronous API, visit http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#_Listeners_and_notifications_section
+      // TIP: For more examples on using the asynchronous API, visit http://infinispan.org/docs/9.0.x/user_guide/user_guide.html#_Listeners_and_notifications_section
    }
 
    public void registeringListeners() {
