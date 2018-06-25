@@ -13,18 +13,33 @@
    <name>Infinispan Sample Testcase Archetype</name>
    <description>Builds a skeleton test case using Infinispan.  Very useful when reporting bugs.</description>
 
+   <properties>
+      <infinispan.version>9.3.0.Final</infinispan.version>
+   </properties>
+
+   <dependencyManagement>
+      <dependencies>
+         <dependency>
+            <groupId>org.infinispan</groupId>
+            <artifactId>infinispan-bom</artifactId>
+            <version>${infinispan.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
+
    <!-- these deps are here so that we can compile the sample classes -->
    <dependencies>
       <dependency>
          <groupId>org.infinispan</groupId>
-         <artifactId>infinispan-embedded</artifactId>
-         <version>9.0.1.Final</version>
+         <artifactId>infinispan-core</artifactId>
       </dependency>
 
       <dependency>
          <groupId>org.infinispan</groupId>
          <artifactId>infinispan-core</artifactId>
-         <version>9.0.1.Final</version>
+         <version>${infinispan.version}</version>
          <type>test-jar</type>
          <scope>test</scope>
       </dependency>
