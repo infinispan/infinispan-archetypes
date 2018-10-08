@@ -10,7 +10,7 @@
 
    <groupId>org.infinispan.archetypes</groupId>
    <artifactId>infinispan-archetypes</artifactId>
-   <version>1.0.24</version>
+   <version>1.0.25-SNAPSHOT</version>
 
    <name>Infinispan Archetypes</name>
    <description>Archetypes for the Infinispan project</description>
@@ -33,7 +33,7 @@
       <connection>scm:git:git@github.com:infinispan/infinispan-archetypes.git</connection> 
       <url>scm:git:git@github.com:infinispan/infinispan-archetypes.git</url> 
       <developerConnection>scm:git:git@github.com:infinispan/infinispan-archetypes.git</developerConnection>  
-    <tag>infinispan-archetypes-1.0.24</tag>
+    <tag>HEAD</tag>
   </scm>
 
    <modules>
