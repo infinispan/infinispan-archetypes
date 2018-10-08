@@ -14,7 +14,7 @@
    <description>Builds a skeleton sample project using Infinispan.</description>
 
    <properties>
-      <infinispan.version>9.3.1.Final</infinispan.version>
+      <infinispan.version>9.4.0.Final</infinispan.version>
    </properties>
 
    <dependencyManagement>
